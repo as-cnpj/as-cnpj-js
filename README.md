@@ -12,6 +12,13 @@ Status atual:
 - pacote em fase inicial `0.x`;
 - publicação no npm ainda pendente.
 
+## Referências rápidas
+
+- [API](docs/api.md)
+- [Estratégia de testes](test/README.md)
+- [Checklist de release](docs/release-checklist.md)
+- [Política de segurança](SECURITY.md)
+
 ## O que a biblioteca faz
 
 Esta biblioteca implementa:
