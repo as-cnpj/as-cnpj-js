@@ -1,24 +1,38 @@
-# AS-CNPJ JS Seed
+# AS-CNPJ JS
 
-Semente pronta para extracao do futuro repositorio `as-cnpj-js`.
+Biblioteca oficial do ecossistema AS-CNPJ para JavaScript e TypeScript.
 
-## Posicionamento
+Repositorio: `https://github.com/as-cnpj/as-cnpj-js`
 
-Esta biblioteca implementa validacao, normalizacao, formatacao e calculo de DV para:
+## O que a biblioteca faz
 
-- CNPJ numerico legado;
-- CNPJ alfanumerico;
-- entradas com mascara e sem mascara.
+Esta biblioteca implementa:
 
-O objetivo aqui nao e permanecer para sempre dentro do hub, e sim servir como base imediata do primeiro repo de runtime da org.
+- validacao de CNPJ numerico;
+- validacao de CNPJ alfanumerico;
+- normalizacao para formato canonico sem mascara;
+- formatacao mascarada;
+- calculo dos digitos verificadores;
+- validacao em modo permissivo e em modo estrito.
 
-## Status
+## Escopo
 
-Estado atual: **ready for extraction**
+Ela foi desenhada para lidar com a coexistencia entre:
 
-Destino:
+- CNPJ legado, somente numerico;
+- CNPJ alfanumerico, previsto pela Receita Federal para julho de 2026.
 
-- `https://github.com/as-cnpj/as-cnpj-js`
+Os dois formatos sao suportados pela mesma API.
+
+## Regras centrais
+
+- os 12 primeiros caracteres aceitam `A-Z0-9`;
+- os 2 ultimos caracteres continuam numericos;
+- o DV usa modulo 11;
+- a conversao de caracteres usa `ASCII - 48`;
+- a entrada e normalizada para caixa alta;
+- entradas mascaradas e sem mascara sao aceitas;
+- repeticoes triviais invalidas sao rejeitadas.
 
 ## API
 
@@ -42,35 +56,63 @@ Aliases explicitos:
 
 ```js
 import {
+  calculateCheckDigits,
   format,
   isValid,
   normalize
-} from "./src/index.js";
+} from "@as-cnpj/core";
 
 isValid("12.ABC.345/01DE-35");
 normalize("12.abc.345/01de-35");
 format("12ABC34501DE35");
+calculateCheckDigits("12ABC34501DE");
 ```
 
-## Regras adotadas
+## Modo estrito
 
-- suporta CNPJ numerico e alfanumerico;
-- normaliza entrada para caixa alta;
-- aceita entrada mascarada e sem mascara;
-- oferece modo `strict`;
-- DV baseado em modulo 11 com conversao `ASCII - 48`;
-- rejeita repeticoes triviais.
+Quando `strict` esta ativo, a entrada precisa chegar em um formato canonico:
 
-## Testes
+- `12ABC34501DE35`
+- `12.ABC.345/01DE-35`
+
+Exemplo:
+
+```js
+isValid("12.ABC.345/01DE-35", { strict: true });
+```
+
+## Desenvolvimento local
+
+Executar testes:
 
 ```bash
 node --test --experimental-test-isolation=none test/cnpj.test.js
 ```
 
-## Relacao com o hub
+## Vetores de teste
 
-Enquanto o repo dedicado nao for extraido:
+O projeto usa vetores compartilhados do ecossistema AS-CNPJ e inclui o exemplo oficial:
 
-- manifesto e governanca ficam no hub `as-cnpj`;
-- vetores compartilhados ficam no hub `as-cnpj`;
-- esta biblioteca prova conformidade contra esses vetores.
+- `12.ABC.345/01DE-35`
+
+## Status
+
+Estado atual:
+
+- biblioteca publicada em repositorio proprio;
+- API principal definida;
+- pacote ainda em fase inicial `0.x`.
+
+## Ecossistema
+
+O hub do projeto fica em:
+
+- `https://github.com/as-cnpj/as-cnpj`
+
+E centraliza:
+
+- manifesto;
+- documentacao oficial consolidada;
+- vetores de teste compartilhados;
+- governanca entre linguagens.
+
