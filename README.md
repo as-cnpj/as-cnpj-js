@@ -1,6 +1,8 @@
 # AS-CNPJ JS
 
-Biblioteca oficial do ecossistema AS-CNPJ para JavaScript e TypeScript.
+Idiomas: **Português (Brasil)** | [English](README.en.md) | [Español](README.es.md) | [Français](README.fr.md)
+
+Biblioteca autoral do ecossistema AS-CNPJ para JavaScript e TypeScript.
 
 Repositorio: `https://github.com/as-cnpj/as-cnpj-js`
 
@@ -119,3 +121,13 @@ E centraliza:
 - documentacao oficial consolidada;
 - vetores de teste compartilhados;
 - governanca entre linguagens.
+
+## Maintenance
+
+Maintainer:
+
+- `@0moura`
+
+Security contact:
+
+- `ascnpj@0moura.io`

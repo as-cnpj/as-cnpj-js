@@ -1,5 +1,7 @@
 # API
 
+Idiomas: **Português (Brasil)** | [English](api.en.md) | [Español](api.es.md) | [Français](api.fr.md)
+
 ## Funcoes principais
 
 - `normalize(value)`
@@ -21,6 +23,11 @@ Tambem existem aliases nomeados com `CNPJ`:
 ## `normalize(value)`
 
 Converte para caixa alta e remove tudo que nao seja `A-Z0-9`.
+
+**Importante**: esta funcao nao valida o CNPJ. O retorno pode nao ser um CNPJ valido.
+Use `isValid` apos normalizar quando precisar de garantia de validade.
+
+Lanca `TypeError` se a entrada nao for string.
 
 ## `isValid(value, options?)`
 

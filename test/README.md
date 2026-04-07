@@ -1,5 +1,7 @@
 # Testes
 
+Idiomas: **Português (Brasil)** | [English](README.en.md) | [Español](README.es.md) | [Français](README.fr.md)
+
 ## Objetivo
 
 Esta pasta documenta a estrategia de testes da biblioteca `as-cnpj-js`.
@@ -100,4 +102,3 @@ Execucao recomendada antes de publicar:
 ```bash
 npm run verify
 ```
-

@@ -1,5 +1,7 @@
 # Release Checklist
 
+Idiomas: **Português (Brasil)** | [English](release-checklist.en.md) | [Español](release-checklist.es.md) | [Français](release-checklist.fr.md)
+
 ## Regra
 
 Nenhum push publico deve acontecer sem revisar este checklist.
@@ -34,4 +36,3 @@ So publicar quando:
 - o conteudo estiver apto para leitura publica;
 - os testes estiverem verdes;
 - o pacote estiver apto para distribuicao.
-

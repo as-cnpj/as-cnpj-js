@@ -1,5 +1,7 @@
 # Decisoes
 
+Idiomas: **Português (Brasil)** | [English](decisoes.en.md) | [Español](decisoes.es.md) | [Français](decisoes.fr.md)
+
 ## 1. JavaScript puro com ESM
 
 Motivo:
@@ -36,4 +38,3 @@ Motivo:
 Motivo:
 
 - evita falsos positivos comuns em validadores simplistas.
-
