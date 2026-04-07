@@ -1,0 +1,1 @@
+import "./cnpj.test.js";

@@ -19,7 +19,7 @@ Nenhum push público deve acontecer sem revisar este checklist.
 - `node --check src/cnpj.js`
 - `node --check src/index.js`
 - `node --check test/cnpj.test.js`
-- `node --test --experimental-test-isolation=none test/cnpj.test.js`
+- `node test/run.js`
 
 ## Publicação
 

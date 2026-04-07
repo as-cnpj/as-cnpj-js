@@ -19,7 +19,7 @@ Do not make a public release without reviewing this checklist.
 - `node --check src/cnpj.js`
 - `node --check src/index.js`
 - `node --check test/cnpj.test.js`
-- `node --test --experimental-test-isolation=none test/cnpj.test.js`
+- `node test/run.js`
 
 ## Publication
 

@@ -105,7 +105,7 @@ isValid("12.ABC.345/01DE-35", { strict: true });
 Execução direta:
 
 ```bash
-node --test --experimental-test-isolation=none test/cnpj.test.js
+node test/run.js
 ```
 
 O conjunto de testes cobre:

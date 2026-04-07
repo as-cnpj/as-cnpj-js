@@ -16,7 +16,7 @@
     "CHANGELOG.md"
   ],
   "engines": {
-    "node": ">=22"
+    "node": ">=20"
   },
   "keywords": [
     "cnpj",
@@ -38,7 +38,7 @@
   },
   "scripts": {
     "check:syntax": "node --check src/cnpj.js && node --check src/index.js && node --check test/cnpj.test.js",
-    "test": "node --test --experimental-test-isolation=none test/cnpj.test.js",
+    "test": "node test/run.js",
     "verify": "npm run check:syntax && npm run test"
   }
 }

@@ -31,7 +31,7 @@ jobs:
           node --check test/cnpj.test.js
 
       - name: Run tests
-        run: node --test --experimental-test-isolation=none test/cnpj.test.js
+        run: node test/run.js
 
       - name: Verify package contents
         run: |
