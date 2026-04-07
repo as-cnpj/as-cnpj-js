@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Node ${{ matrix.node-version }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20, 22]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Syntax check
+        run: |
+          node --check src/cnpj.js
+          node --check src/index.js
+          node --check test/cnpj.test.js
+
+      - name: Run tests
+        run: node --test --experimental-test-isolation=none test/cnpj.test.js
+
+      - name: Verify package contents
+        run: |
+          npm pack --dry-run --json > pack-output.json
+          node -e "const fs = require('fs'); const data = JSON.parse(fs.readFileSync('pack-output.json', 'utf8')); const files = data[0].files.map((file) => file.path); const forbidden = files.filter((path) => /^test\//.test(path) || /^docs\//.test(path) || /(^|\/)\.env(\..+)?$/.test(path) || /(^|\/)\.npmrc$/.test(path)); if (forbidden.length) { console.error('FAIL: forbidden files in package:', forbidden); process.exit(1); } console.log('Package contents OK:', files);"

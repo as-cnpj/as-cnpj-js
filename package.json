@@ -1,5 +1,5 @@
 {
-  "name": "@as-cnpj/core",
+  "name": "@ascnpj/core",
   "version": "0.1.0",
   "description": "Official AS-CNPJ library for validation, normalization and formatting of numeric and alphanumeric CNPJ.",
   "type": "module",

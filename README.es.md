@@ -13,6 +13,14 @@ Repositorio: `https://github.com/as-cnpj/as-cnpj-js`
 - publicación en registry aún pendiente;
 - algoritmo ya validado con pruebas automatizadas y vectores compartidos del ecosistema.
 
+## Listo para npm
+
+- paquete definido como `@ascnpj/core`;
+- cero dependencias de runtime;
+- `.env` y `.npmrc` protegidos por `.gitignore`;
+- CI preparada para revisión de sintaxis, pruebas y verificación del contenido del paquete;
+- publicación con provenance recomendada en el próximo paso de release.
+
 ## Empieza por aquí
 
 - [API de la biblioteca](docs/api.md)
@@ -72,7 +80,7 @@ import {
   format,
   isValid,
   normalize
-} from "@as-cnpj/core";
+} from "@ascnpj/core";
 
 isValid("12.ABC.345/01DE-35");
 normalize("12.abc.345/01de-35");

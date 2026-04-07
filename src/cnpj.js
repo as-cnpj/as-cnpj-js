@@ -35,6 +35,43 @@ function calculateDigit(value, weights) {
   return remainder < 2 ? 0 : 11 - remainder;
 }
 
+function validateAndNormalize(value, options) {
+  if (typeof value !== "string") {
+    return null;
+  }
+
+  if (value.length > MAX_INPUT_LENGTH) {
+    return null;
+  }
+
+  if (!ASCII_PRINTABLE_ONLY.test(value)) {
+    return null;
+  }
+
+  const normalized = sanitize(value);
+
+  if (options.strict && !isStrictFormat(value.toUpperCase())) {
+    return null;
+  }
+
+  if (!PLAIN_CNPJ_PATTERN.test(normalized)) {
+    return null;
+  }
+
+  if (REPEATED_CHARS_PATTERN.test(normalized)) {
+    return null;
+  }
+
+  const base = normalized.slice(0, CNPJ_BASE_LENGTH);
+  const expectedDigits = calculateCNPJCheckDigits(base);
+
+  if (normalized !== `${base}${expectedDigits}`) {
+    return null;
+  }
+
+  return normalized;
+}
+
 export function normalizeCNPJ(value) {
   if (typeof value !== "string") {
     throw new TypeError("A entrada deve ser uma string.");
@@ -61,44 +98,15 @@ export function calculateCNPJCheckDigits(base12) {
 }
 
 export function isValidCNPJ(value, options = {}) {
-  if (typeof value !== "string") {
-    return false;
-  }
-
-  if (value.length > MAX_INPUT_LENGTH) {
-    return false;
-  }
-
-  if (!ASCII_PRINTABLE_ONLY.test(value)) {
-    return false;
-  }
-
-  const normalized = sanitize(value);
-
-  if (options.strict && !isStrictFormat(value.toUpperCase())) {
-    return false;
-  }
-
-  if (!PLAIN_CNPJ_PATTERN.test(normalized)) {
-    return false;
-  }
-
-  if (REPEATED_CHARS_PATTERN.test(normalized)) {
-    return false;
-  }
-
-  const base = normalized.slice(0, CNPJ_BASE_LENGTH);
-  const expectedDigits = calculateCNPJCheckDigits(base);
-
-  return normalized === `${base}${expectedDigits}`;
+  return validateAndNormalize(value, options) !== null;
 }
 
 export function formatCNPJ(value, options = {}) {
-  if (!isValidCNPJ(value, options)) {
+  const normalized = validateAndNormalize(value, options);
+
+  if (normalized === null) {
     return null;
   }
-
-  const normalized = sanitize(value);
 
   return (
     normalized.slice(0, 2) + "." +
@@ -110,10 +118,11 @@ export function formatCNPJ(value, options = {}) {
 }
 
 export function assertValidCNPJ(value, options = {}) {
-  if (!isValidCNPJ(value, options)) {
+  const normalized = validateAndNormalize(value, options);
+
+  if (normalized === null) {
     throw new TypeError("CNPJ invalido.");
   }
 
-  return sanitize(value);
+  return normalized;
 }
-
