@@ -2,9 +2,8 @@
 
 ## 0.1.0
 
-- initial extraction-ready package structure
+- initial public release
 - numeric and alphanumeric CNPJ validation
 - normalization, formatting and check digit calculation
 - strict mode validation
-- test coverage for official Receita example and legacy numeric cases
-
+- test coverage for the official Receita example and legacy numeric cases

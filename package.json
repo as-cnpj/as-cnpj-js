@@ -33,8 +33,12 @@
     "url": "https://github.com/as-cnpj/as-cnpj-js/issues"
   },
   "homepage": "https://github.com/as-cnpj/as-cnpj-js#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
-    "test": "node --test --experimental-test-isolation=none test/cnpj.test.js"
+    "check:syntax": "node --check src/cnpj.js && node --check src/index.js && node --check test/cnpj.test.js",
+    "test": "node --test --experimental-test-isolation=none test/cnpj.test.js",
+    "verify": "npm run check:syntax && npm run test"
   }
 }
-

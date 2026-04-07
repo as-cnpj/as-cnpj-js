@@ -32,8 +32,8 @@ Opcoes:
 
 Quando `strict` esta ativo, a entrada precisa estar em um dos formatos canonicos:
 
-- `AABBCCDD001122`
-- `AA.BBB.CCC/DDDD-12`
+- `12ABC34501DE35`
+- `12.ABC.345/01DE-35`
 
 ## `format(value, options?)`
 
@@ -58,4 +58,3 @@ Recebe os 12 caracteres-base e retorna os 2 digitos verificadores.
 - calculo por modulo 11;
 - conversao `ASCII - 48`;
 - coexistencia entre formatos.
-

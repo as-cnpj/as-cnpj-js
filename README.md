@@ -4,6 +4,12 @@ Biblioteca oficial do ecossistema AS-CNPJ para JavaScript e TypeScript.
 
 Repositorio: `https://github.com/as-cnpj/as-cnpj-js`
 
+Status atual:
+
+- repositorio publicado;
+- pacote em fase inicial `0.x`;
+- publicacao no npm ainda pendente.
+
 ## O que a biblioteca faz
 
 Esta biblioteca implementa:
@@ -52,6 +58,12 @@ Aliases explicitos:
 - `assertValidCNPJ(value, options?)`
 - `calculateCNPJCheckDigits(base12)`
 
+## Instalacao
+
+Publicacao em registry ainda nao foi feita.
+
+Ate a primeira release de pacote, use o repositorio como referencia tecnica e para integracao local.
+
 ## Exemplo
 
 ```js
@@ -95,19 +107,11 @@ O projeto usa vetores compartilhados do ecossistema AS-CNPJ e inclui o exemplo o
 
 - `12.ABC.345/01DE-35`
 
-## Status
-
-Estado atual:
-
-- biblioteca publicada em repositorio proprio;
-- API principal definida;
-- pacote ainda em fase inicial `0.x`.
-
 ## Ecossistema
 
-O hub do projeto fica em:
+O ecossistema fica na org:
 
-- `https://github.com/as-cnpj/as-cnpj`
+- `https://github.com/as-cnpj`
 
 E centraliza:
 
@@ -115,4 +119,3 @@ E centraliza:
 - documentacao oficial consolidada;
 - vetores de teste compartilhados;
 - governanca entre linguagens.
-
