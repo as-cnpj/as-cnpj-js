@@ -1,0 +1,40 @@
+{
+  "name": "@as-cnpj/core",
+  "version": "0.1.0",
+  "description": "Official AS-CNPJ library for validation, normalization and formatting of numeric and alphanumeric CNPJ.",
+  "type": "module",
+  "license": "MIT",
+  "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "types": "./src/index.d.ts",
+  "files": [
+    "src",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "keywords": [
+    "cnpj",
+    "cnpj-alfanumerico",
+    "brasil",
+    "validator",
+    "as-cnpj"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/as-cnpj/as-cnpj-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/as-cnpj/as-cnpj-js/issues"
+  },
+  "homepage": "https://github.com/as-cnpj/as-cnpj-js#readme",
+  "scripts": {
+    "test": "node --test --experimental-test-isolation=none test/cnpj.test.js"
+  }
+}
+
