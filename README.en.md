@@ -2,39 +2,142 @@
 
 Languages: [Português (Brasil)](README.md) | **English** | [Español](README.es.md) | [Français](README.fr.md)
 
-Author-led AS-CNPJ library for JavaScript and TypeScript.
+Author library for numeric and alphanumeric CNPJ validation in JavaScript and TypeScript.
 
 Repository: `https://github.com/as-cnpj/as-cnpj-js`
 
-## What the library does
-
-This library provides:
-
-- numeric CNPJ validation;
-- alphanumeric CNPJ validation;
-- canonical normalization without mask;
-- masked formatting;
-- check digit calculation;
-- permissive and strict validation modes.
-
-## Key rules
-
-- the first 12 characters accept `A-Z0-9`;
-- the last 2 characters remain numeric;
-- check digits use modulo 11;
-- character conversion uses `ASCII - 48`;
-- input is normalized to uppercase;
-- masked and unmasked inputs are accepted;
-- trivial repeated values are rejected.
-
 ## Status
 
-- repository published;
+- public and active repository;
 - package still in early `0.x` stage;
-- npm publication still pending.
+- registry publication still pending;
+- algorithm already validated with automated tests and shared ecosystem vectors.
+
+## Start here
+
+- [Library API](docs/api.md)
+- [Test strategy](test/README.md)
+- [Release checklist](docs/release-checklist.md)
+- [Security policy](SECURITY.md)
+- [AS-CNPJ ecosystem hub](https://github.com/as-cnpj/as-cnpj)
+
+## What this library solves
+
+This library exists to cover, through a single API, the coexistence between:
+
+- legacy numeric CNPJ;
+- alphanumeric CNPJ expected by Receita Federal for July 2026;
+- masked and unmasked input;
+- permissive and strict validation flows.
+
+It implements:
+
+- validation;
+- normalization;
+- formatting;
+- check digit calculation;
+- consistency with shared ecosystem vectors.
+
+## Core guarantees
+
+- accepts `A-Z0-9` in the first 12 characters;
+- keeps the 2 check digits numeric;
+- uses modulo 11 with `ASCII - 48` conversion;
+- normalizes input to uppercase;
+- rejects trivial invalid repetitions;
+- supports permissive and strict modes.
+
+## Public API
+
+Main functions:
+
+- `normalize(value)`
+- `isValid(value, options?)`
+- `format(value, options?)`
+- `assertValid(value, options?)`
+- `calculateCheckDigits(base12)`
+
+Explicit aliases:
+
+- `normalizeCNPJ(value)`
+- `isValidCNPJ(value, options?)`
+- `formatCNPJ(value, options?)`
+- `assertValidCNPJ(value, options?)`
+- `calculateCNPJCheckDigits(base12)`
+
+## Minimal example
+
+```js
+import {
+  format,
+  isValid,
+  normalize
+} from "@as-cnpj/core";
+
+isValid("12.ABC.345/01DE-35");
+normalize("12.abc.345/01de-35");
+format("12ABC34501DE35");
+```
+
+## Strict mode
+
+When `strict` is active, input must arrive in one of the canonical formats:
+
+- `12ABC34501DE35`
+- `12.ABC.345/01DE-35`
+
+Example:
+
+```js
+isValid("12.ABC.345/01DE-35", { strict: true });
+```
+
+## Tests
+
+Direct execution:
+
+```bash
+node --test --experimental-test-isolation=none test/cnpj.test.js
+```
+
+The test suite covers:
+
+- positive numeric cases;
+- positive alphanumeric cases;
+- negative cases;
+- strict mode;
+- alias consistency;
+- shared hub vectors.
+
+## Shared vectors
+
+`as-cnpj-js` does not define the truth by itself.
+
+The ecosystem contract also depends on:
+
+- shared vectors in the hub;
+- documented rules derived from official sources;
+- convergence with future implementations in other languages.
+
+## Ecosystem
+
+GitHub org:
+
+- `https://github.com/as-cnpj`
+
+Project hub:
+
+- manifesto;
+- consolidated documentation;
+- shared vectors;
+- cross-language governance.
 
 ## Maintenance
 
-Maintainer: `@0moura`  
-Security contact: `ascnpj@0moura.io`
+Maintainer:
 
+- `@0moura`
+
+Institutional contact:
+
+- `ascnpj@0moura.io`

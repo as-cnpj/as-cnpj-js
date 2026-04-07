@@ -1,6 +1,6 @@
 # Changelog
 
-Languages: [Portugues (Brasil)](CHANGELOG.md) | **English** | [Espanol](CHANGELOG.es.md) | [Francais](CHANGELOG.fr.md)
+Languages: [Português (Brasil)](CHANGELOG.md) | **English** | [Español](CHANGELOG.es.md) | [Français](CHANGELOG.fr.md)
 
 ## 0.1.0
 
