@@ -1,11 +1,11 @@
 # Changelog
 
-Idiomas: **Portugues (Brasil)** | [English](CHANGELOG.en.md) | [Espanol](CHANGELOG.es.md) | [Francais](CHANGELOG.fr.md)
+Idiomas: **Português (Brasil)** | [English](CHANGELOG.en.md) | [Español](CHANGELOG.es.md) | [Français](CHANGELOG.fr.md)
 
 ## 0.1.0
 
-- primeira versao publica
-- validacao de CNPJ numerico e alfanumerico
-- normalizacao, formatacao e calculo de digitos verificadores
-- validacao em modo estrito
-- cobertura de testes para o exemplo oficial da Receita e casos legados numericos
+- primeira versão pública
+- validação de CNPJ numérico e alfanumérico
+- normalização, formatação e cálculo de dígitos verificadores
+- validação em modo estrito
+- cobertura de testes para o exemplo oficial da Receita e casos legados numéricos

@@ -1,38 +1,37 @@
-# Politica de Seguranca
+# Política de Segurança
 
 Idiomas: **Português (Brasil)** | [English](SECURITY.en.md) | [Español](SECURITY.es.md) | [Français](SECURITY.fr.md)
 
 ## Escopo
 
-Esta politica cobre:
+Esta política cobre:
 
-- o nucleo de validacao;
-- os vetores de teste distribuídos com este repositorio;
+- o núcleo de validação;
+- os vetores de teste distribuídos com este repositório;
 - scripts de build e release deste pacote.
 
-## Como reportar uma vulnerabilidade
+## Como Reportar uma Vulnerabilidade
 
-**Nao abra issue publica.**
+**Não abra issue pública.**
 
 Canal preferencial:
 
-- GitHub Security Advisories neste repositorio.
+- GitHub Security Advisories neste repositório.
 
 Canal alternativo:
 
 - `ascnpj@0moura.io`
 
-## O que incluir
+## O Que Incluir
 
-- descricao clara do problema;
+- descrição clara do problema;
 - passos para reproduzir;
-- versao afetada ou commit;
+- versão afetada ou commit;
 - impacto estimado;
-- possivel mitigacao, se houver.
+- possível mitigação, se houver.
 
-## Compromisso de resposta
+## Compromisso de Resposta
 
-- confirmacao de recebimento em ate 3 dias uteis;
-- avaliacao inicial em ate 7 dias uteis;
-- mitigacao ou correcao em ate 30 dias apos a confirmacao, quando aplicavel.
-
+- confirmação de recebimento em até 3 dias úteis;
+- avaliação inicial em até 7 dias úteis;
+- mitigação ou correção em até 30 dias após a confirmação, quando aplicável.

@@ -4,48 +4,48 @@ Idiomas: **Português (Brasil)** | [English](README.en.md) | [Español](README.e
 
 ## Objetivo
 
-Esta pasta documenta a estrategia de testes da biblioteca `as-cnpj-js`.
+Esta pasta documenta a estratégia de testes da biblioteca `as-cnpj-js`.
 
-Os testes existem para provar que a implementacao:
+Os testes existem para provar que a implementação:
 
-- valida CNPJ numerico legado;
-- valida CNPJ alfanumerico;
-- calcula corretamente os digitos verificadores;
-- normaliza entrada com caixa baixa e caracteres de mascara;
-- formata corretamente a saida mascarada;
-- rejeita entradas invalidas e repeticoes triviais;
+- valida CNPJ numérico legado;
+- valida CNPJ alfanumérico;
+- calcula corretamente os dígitos verificadores;
+- normaliza entrada com caixa baixa e caracteres de máscara;
+- formata corretamente a saída mascarada;
+- rejeita entradas inválidas e repetições triviais;
 - preserva compatibilidade com os vetores compartilhados do ecossistema.
 
-## Arquivo principal
+## Arquivo Principal
 
 - `cnpj.test.js`
 
-## O que e validado
+## O Que é Validado
 
-### 1. Normalizacao
+### 1. Normalização
 
 Verifica que:
 
-- letras minusculas sao convertidas para maiusculas;
-- caracteres fora de `A-Z0-9` sao removidos;
-- a saida canonica fica sem mascara.
+- letras minúsculas são convertidas para maiúsculas;
+- caracteres fora de `A-Z0-9` são removidos;
+- a saída canônica fica sem máscara.
 
-### 2. Calculo de DV
+### 2. Cálculo de DV
 
 Verifica que:
 
 - o exemplo oficial `12ABC34501DE` gera DV `35`;
-- a regra de modulo 11 com conversao `ASCII - 48` esta correta.
+- a regra de módulo 11 com conversão `ASCII - 48` está correta.
 
-### 3. Validacao de casos positivos
+### 3. Validação de Casos Positivos
 
 Verifica que:
 
-- CNPJ alfanumerico valido passa;
-- CNPJ numerico legado valido passa;
-- entradas mascaradas e sem mascara passam.
+- CNPJ alfanumérico válido passa;
+- CNPJ numérico legado válido passa;
+- entradas mascaradas e sem máscara passam.
 
-### 4. Validacao de casos negativos
+### 4. Validação de Casos Negativos
 
 Verifica que:
 
@@ -53,34 +53,34 @@ Verifica que:
 - entradas curtas falham;
 - entradas vazias falham;
 - valores repetidos triviais falham;
-- tipos invalidos falham.
+- tipos inválidos falham.
 
-### 5. Modo estrito
-
-Verifica que:
-
-- formatos canonicos sao aceitos;
-- entradas com ruido adicional sao rejeitadas quando `strict` esta ativo.
-
-### 6. Coerencia da API
+### 5. Modo Estrito
 
 Verifica que:
 
-- aliases curtos e aliases explicitos com `CNPJ` apresentam o mesmo comportamento.
+- formatos canônicos são aceitos;
+- entradas com ruído adicional são rejeitadas quando `strict` está ativo.
 
-### 7. Vetores compartilhados
+### 6. Coerência da API
 
 Verifica que:
 
-- todos os casos validos em `vectors/cnpj.json` permanecem validos;
-- todos os casos invalidos em `vectors/cnpj.json` permanecem invalidos;
-- normalizacao e formatacao batem com o esperado.
+- aliases curtos e aliases explícitos com `CNPJ` apresentam o mesmo comportamento.
 
-## Saida esperada
+### 7. Vetores Compartilhados
 
-Quando tudo esta correto, a suite deve terminar com todos os testes aprovados.
+Verifica que:
 
-Exemplo resumido de saida esperada:
+- todos os casos válidos em `vectors/cnpj.json` permanecem válidos;
+- todos os casos inválidos em `vectors/cnpj.json` permanecem inválidos;
+- normalização e formatação batem com o esperado.
+
+## Saída Esperada
+
+Quando tudo está correto, a suite deve terminar com todos os testes aprovados.
+
+Exemplo resumido de saída esperada:
 
 ```text
 1..11
@@ -89,15 +89,15 @@ Exemplo resumido de saida esperada:
 # fail 0
 ```
 
-## Como executar
+## Como Executar
 
-Execucao direta:
+Execução direta:
 
 ```bash
 node --test --experimental-test-isolation=none test/cnpj.test.js
 ```
 
-Execucao recomendada antes de publicar:
+Execução recomendada antes de publicar:
 
 ```bash
 npm run verify

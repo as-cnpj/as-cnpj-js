@@ -4,43 +4,43 @@ Idiomas: **Português (Brasil)** | [English](README.en.md) | [Español](README.e
 
 Biblioteca autoral do ecossistema AS-CNPJ para JavaScript e TypeScript.
 
-Repositorio: `https://github.com/as-cnpj/as-cnpj-js`
+Repositório: `https://github.com/as-cnpj/as-cnpj-js`
 
 Status atual:
 
-- repositorio publicado;
+- repositório publicado;
 - pacote em fase inicial `0.x`;
-- publicacao no npm ainda pendente.
+- publicação no npm ainda pendente.
 
 ## O que a biblioteca faz
 
 Esta biblioteca implementa:
 
-- validacao de CNPJ numerico;
-- validacao de CNPJ alfanumerico;
-- normalizacao para formato canonico sem mascara;
-- formatacao mascarada;
-- calculo dos digitos verificadores;
-- validacao em modo permissivo e em modo estrito.
+- validação de CNPJ numérico;
+- validação de CNPJ alfanumérico;
+- normalização para formato canônico sem máscara;
+- formatação mascarada;
+- cálculo dos dígitos verificadores;
+- validação em modo permissivo e em modo estrito.
 
 ## Escopo
 
-Ela foi desenhada para lidar com a coexistencia entre:
+Ela foi desenhada para lidar com a coexistência entre:
 
-- CNPJ legado, somente numerico;
-- CNPJ alfanumerico, previsto pela Receita Federal para julho de 2026.
+- CNPJ legado, somente numérico;
+- CNPJ alfanumérico, previsto pela Receita Federal para julho de 2026.
 
-Os dois formatos sao suportados pela mesma API.
+Os dois formatos são suportados pela mesma API.
 
 ## Regras centrais
 
 - os 12 primeiros caracteres aceitam `A-Z0-9`;
-- os 2 ultimos caracteres continuam numericos;
-- o DV usa modulo 11;
-- a conversao de caracteres usa `ASCII - 48`;
-- a entrada e normalizada para caixa alta;
-- entradas mascaradas e sem mascara sao aceitas;
-- repeticoes triviais invalidas sao rejeitadas.
+- os 2 últimos caracteres continuam numéricos;
+- o DV usa módulo 11;
+- a conversão de caracteres usa `ASCII - 48`;
+- a entrada é normalizada para caixa alta;
+- entradas mascaradas e sem máscara são aceitas;
+- repetições triviais inválidas são rejeitadas.
 
 ## API
 
@@ -52,7 +52,7 @@ API curta:
 - `assertValid(value, options?)`
 - `calculateCheckDigits(base12)`
 
-Aliases explicitos:
+Aliases explícitos:
 
 - `normalizeCNPJ(value)`
 - `isValidCNPJ(value, options?)`
@@ -60,11 +60,11 @@ Aliases explicitos:
 - `assertValidCNPJ(value, options?)`
 - `calculateCNPJCheckDigits(base12)`
 
-## Instalacao
+## Instalação
 
-Publicacao em registry ainda nao foi feita.
+Publicação em registry ainda não foi feita.
 
-Ate a primeira release de pacote, use o repositorio como referencia tecnica e para integracao local.
+Até a primeira release de pacote, use o repositório como referência técnica e para integração local.
 
 ## Exemplo
 
@@ -84,7 +84,7 @@ calculateCheckDigits("12ABC34501DE");
 
 ## Modo estrito
 
-Quando `strict` esta ativo, a entrada precisa chegar em um formato canonico:
+Quando `strict` está ativo, a entrada precisa chegar em um formato canônico:
 
 - `12ABC34501DE35`
 - `12.ABC.345/01DE-35`
@@ -118,9 +118,9 @@ O ecossistema fica na org:
 E centraliza:
 
 - manifesto;
-- documentacao oficial consolidada;
+- documentação oficial consolidada;
 - vetores de teste compartilhados;
-- governanca entre linguagens.
+- governança entre linguagens.
 
 ## Maintenance
 
