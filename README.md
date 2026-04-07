@@ -2,56 +2,54 @@
 
 Idiomas: **Português (Brasil)** | [English](README.en.md) | [Español](README.es.md) | [Français](README.fr.md)
 
-Biblioteca autoral do ecossistema AS-CNPJ para JavaScript e TypeScript.
+Biblioteca autoral para validação de CNPJ numérico e alfanumérico em JavaScript e TypeScript.
 
 Repositório: `https://github.com/as-cnpj/as-cnpj-js`
 
-Status atual:
+## Status
 
-- repositório publicado;
+- repositório público e ativo;
 - pacote em fase inicial `0.x`;
-- publicação no npm ainda pendente.
+- publicação em registry ainda pendente;
+- algoritmo já validado com testes automatizados e vetores compartilhados do ecossistema.
 
-## Referências rápidas
+## Comece por aqui
 
-- [API](docs/api.md)
+- [API da biblioteca](docs/api.md)
 - [Estratégia de testes](test/README.md)
 - [Checklist de release](docs/release-checklist.md)
 - [Política de segurança](SECURITY.md)
+- [Hub do ecossistema AS-CNPJ](https://github.com/as-cnpj/as-cnpj)
 
-## O que a biblioteca faz
+## O que esta biblioteca resolve
 
-Esta biblioteca implementa:
+Esta biblioteca existe para cobrir, com uma única API, a coexistência entre:
 
-- validação de CNPJ numérico;
-- validação de CNPJ alfanumérico;
-- normalização para formato canônico sem máscara;
-- formatação mascarada;
-- cálculo dos dígitos verificadores;
-- validação em modo permissivo e em modo estrito.
+- CNPJ legado numérico;
+- CNPJ alfanumérico previsto pela Receita Federal para julho de 2026;
+- entradas com máscara e sem máscara;
+- fluxos permissivos e fluxos com validação estrita.
 
-## Escopo
+Ela implementa:
 
-Ela foi desenhada para lidar com a coexistência entre:
+- validação;
+- normalização;
+- formatação;
+- cálculo de dígitos verificadores;
+- consistência com vetores compartilhados do ecossistema.
 
-- CNPJ legado, somente numérico;
-- CNPJ alfanumérico, previsto pela Receita Federal para julho de 2026.
+## Garantias centrais
 
-Os dois formatos são suportados pela mesma API.
+- aceita `A-Z0-9` nos 12 primeiros caracteres;
+- mantém os 2 dígitos verificadores como numéricos;
+- usa módulo 11 com conversão `ASCII - 48`;
+- normaliza entrada para caixa alta;
+- rejeita repetições triviais inválidas;
+- suporta modo permissivo e modo estrito.
 
-## Regras centrais
+## API pública
 
-- os 12 primeiros caracteres aceitam `A-Z0-9`;
-- os 2 últimos caracteres continuam numéricos;
-- o DV usa módulo 11;
-- a conversão de caracteres usa `ASCII - 48`;
-- a entrada é normalizada para caixa alta;
-- entradas mascaradas e sem máscara são aceitas;
-- repetições triviais inválidas são rejeitadas.
-
-## API
-
-API curta:
+Funções principais:
 
 - `normalize(value)`
 - `isValid(value, options?)`
@@ -67,17 +65,10 @@ Aliases explícitos:
 - `assertValidCNPJ(value, options?)`
 - `calculateCNPJCheckDigits(base12)`
 
-## Instalação
-
-Publicação em registry ainda não foi feita.
-
-Até a primeira release de pacote, use o repositório como referência técnica e para integração local.
-
-## Exemplo
+## Exemplo mínimo
 
 ```js
 import {
-  calculateCheckDigits,
   format,
   isValid,
   normalize
@@ -86,12 +77,11 @@ import {
 isValid("12.ABC.345/01DE-35");
 normalize("12.abc.345/01de-35");
 format("12ABC34501DE35");
-calculateCheckDigits("12ABC34501DE");
 ```
 
 ## Modo estrito
 
-Quando `strict` está ativo, a entrada precisa chegar em um formato canônico:
+Quando `strict` está ativo, a entrada precisa chegar em um dos formatos canônicos:
 
 - `12ABC34501DE35`
 - `12.ABC.345/01DE-35`
@@ -102,39 +92,52 @@ Exemplo:
 isValid("12.ABC.345/01DE-35", { strict: true });
 ```
 
-## Desenvolvimento local
+## Testes
 
-Executar testes:
+Execução direta:
 
 ```bash
 node --test --experimental-test-isolation=none test/cnpj.test.js
 ```
 
-## Vetores de teste
+O conjunto de testes cobre:
 
-O projeto usa vetores compartilhados do ecossistema AS-CNPJ e inclui o exemplo oficial:
+- casos positivos numéricos;
+- casos positivos alfanuméricos;
+- casos negativos;
+- modo estrito;
+- consistência entre aliases;
+- vetores compartilhados do hub.
 
-- `12.ABC.345/01DE-35`
+## Vetores compartilhados
+
+O `as-cnpj-js` não define a verdade sozinho.
+
+O contrato do ecossistema também depende de:
+
+- vetores compartilhados no hub;
+- regras documentadas a partir das fontes oficiais;
+- convergência entre implementações futuras em outras linguagens.
 
 ## Ecossistema
 
-O ecossistema fica na org:
+Org GitHub:
 
 - `https://github.com/as-cnpj`
 
-E centraliza:
+Hub do projeto:
 
 - manifesto;
-- documentação oficial consolidada;
-- vetores de teste compartilhados;
+- documentação consolidada;
+- vetores compartilhados;
 - governança entre linguagens.
 
-## Maintenance
+## Manutenção
 
 Maintainer:
 
 - `@0moura`
 
-Security contact:
+Contato institucional:
 
 - `ascnpj@0moura.io`
