@@ -19,7 +19,7 @@ Repositório: `https://github.com/as-cnpj/as-cnpj-js`
 - zero dependências de runtime;
 - `.env` e `.npmrc` protegidos por `.gitignore`;
 - CI preparada para checagem de sintaxe, testes e conteúdo do pacote;
-- publicação com provenance recomendada no próximo passo de release.
+- workflow de release preparado para publicação no npm com `provenance`.
 
 ## Comece por aqui
 
