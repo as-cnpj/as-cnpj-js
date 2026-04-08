@@ -1,0 +1,52 @@
+name: Release npm
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: npm-release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: Publish @ascnpj/core
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+
+      - name: Assert release tag matches package version
+        run: |
+          VERSION=$(node -p "JSON.parse(require('fs').readFileSync('package.json', 'utf8')).version")
+          TAG="${{ github.event.release.tag_name }}"
+
+          if [ "$TAG" != "v$VERSION" ]; then
+            echo "Release tag $TAG does not match package.json version v$VERSION"
+            exit 1
+          fi
+
+      - name: Syntax check
+        run: npm run check:syntax
+
+      - name: Run tests
+        run: npm test
+
+      - name: Verify package contents
+        run: |
+          npm pack --dry-run --json > pack-output.json
+          node -e "const fs = require('fs'); const data = JSON.parse(fs.readFileSync('pack-output.json', 'utf8')); const files = data[0].files.map((file) => file.path); const forbidden = files.filter((path) => /^test\//.test(path) || /^docs\//.test(path) || /(^|\/)\.env(\..+)?$/.test(path) || /(^|\/)\.npmrc$/.test(path)); if (forbidden.length) { console.error('FAIL: forbidden files in package:', forbidden); process.exit(1); } console.log('Package contents OK:', files);"
+
+      - name: Publish to npm with provenance
+        run: npm publish --access public --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

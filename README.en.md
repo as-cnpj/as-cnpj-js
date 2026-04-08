@@ -19,7 +19,7 @@ Repository: `https://github.com/as-cnpj/as-cnpj-js`
 - zero runtime dependencies;
 - `.env` and `.npmrc` protected by `.gitignore`;
 - CI prepared for syntax checks, tests, and package-content verification;
-- provenance-based publication recommended in the next release step.
+- release workflow prepared for npm publication with `provenance`.
 
 ## Start here
 
@@ -105,7 +105,7 @@ isValid("12.ABC.345/01DE-35", { strict: true });
 Direct execution:
 
 ```bash
-node --test --experimental-test-isolation=none test/cnpj.test.js
+node test/run.js
 ```
 
 The test suite covers:

@@ -94,7 +94,7 @@ Exemplo resumido de saída esperada:
 Execução direta:
 
 ```bash
-node --test --experimental-test-isolation=none test/cnpj.test.js
+node test/run.js
 ```
 
 Execução recomendada antes de publicar:
