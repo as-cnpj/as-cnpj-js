@@ -2,6 +2,13 @@
 
 Langues: [Português (Brasil)](CHANGELOG.md) | [English](CHANGELOG.en.md) | [Español](CHANGELOG.es.md) | **Français**
 
+## 0.1.1
+
+- publication du package `@ascnpj/core` sur npm
+- migration du workflow de release vers Trusted Publishing
+- mise à jour des GitHub Actions vers la ligne compatible avec Node 24
+- mise à jour du README avec lien et badge npm
+
 ## 0.1.0
 
 - premiere version publique
