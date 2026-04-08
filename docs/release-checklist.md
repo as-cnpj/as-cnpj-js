@@ -28,10 +28,10 @@ Nenhum push público deve acontecer sem revisar este checklist.
 - Vetores compartilhados presentes.
 - API documentada em `docs/api.md`.
 - Decisões principais documentadas em `docs/decisoes.md`.
-- Secret `NPM_TOKEN` configurado no GitHub.
+- Trusted Publisher configurado no npm para o repositório `as-cnpj/as-cnpj-js`.
 - Release criada no GitHub com tag no formato `vX.Y.Z`.
 - Tag da release coerente com a versão presente em `package.json`.
-- Workflow [`.github/workflows/release.yml`](../.github/workflows/release.yml) apto a publicar com `npm publish --access public --provenance`.
+- Workflow [`.github/workflows/release.yml`](../.github/workflows/release.yml) apto a publicar com `npm publish --access public`.
 
 ## Gate final
 
