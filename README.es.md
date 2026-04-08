@@ -2,6 +2,8 @@
 
 Idiomas: [Português (Brasil)](README.md) | [English](README.en.md) | **Español** | [Français](README.fr.md)
 
+[![npm version](https://img.shields.io/npm/v/%40ascnpj%2Fcore)](https://www.npmjs.com/package/@ascnpj/core)
+
 Biblioteca autoral para validación de CNPJ numérico y alfanumérico en JavaScript y TypeScript.
 
 Repositorio: `https://github.com/as-cnpj/as-cnpj-js`
@@ -10,16 +12,17 @@ Repositorio: `https://github.com/as-cnpj/as-cnpj-js`
 
 - repositorio público y activo;
 - paquete todavía en fase inicial `0.x`;
-- publicación en registry aún pendiente;
+- paquete publicado en npm como [`@ascnpj/core`](https://www.npmjs.com/package/@ascnpj/core);
 - algoritmo ya validado con pruebas automatizadas y vectores compartidos del ecosistema.
 
-## Listo para npm
+## Publicación
 
-- paquete definido como `@ascnpj/core`;
+- paquete npm: [`@ascnpj/core`](https://www.npmjs.com/package/@ascnpj/core);
 - cero dependencias de runtime;
 - `.env` y `.npmrc` protegidos por `.gitignore`;
 - CI preparada para revisión de sintaxis, pruebas y verificación del contenido del paquete;
-- workflow de release preparado para publicación en npm con `provenance`.
+- workflow de release alineado con Trusted Publishing vía GitHub Actions;
+- provenance generada automáticamente durante la release.
 
 ## Empieza por aquí
 
