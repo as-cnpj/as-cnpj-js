@@ -1,20 +1,35 @@
-# AS-CNPJ JS
+<div align="center">
+  <img src="assets/brand/as-cnpj-logo-light.svg" alt="AS-CNPJ JS" width="860" />
+</div>
+
+<p align="center">
+  Biblioteca autoral do ecossistema AS-CNPJ para validação, normalização, formatação e cálculo de dígitos verificadores de CNPJ numérico e alfanumérico em JavaScript e TypeScript.
+</p>
+
+<p align="center">
+  <a href="https://www.npmjs.com/package/@ascnpj/core">npm</a> ·
+  <a href="https://as-cnpj.org">Site</a> ·
+  <a href="https://github.com/as-cnpj/as-cnpj">Hub do ecossistema</a> ·
+  <a href="docs/api.md">API</a> ·
+  <a href="test/README.md">Testes</a>
+</p>
+
+<p align="center">
+  <a href="https://www.npmjs.com/package/@ascnpj/core"><img alt="npm @ascnpj/core" src="https://img.shields.io/npm/v/%40ascnpj%2Fcore?style=flat-square&label=npm&labelColor=1C1917&color=F97316"></a>
+  <a href="https://github.com/as-cnpj/as-cnpj-js/actions/workflows/ci.yml"><img alt="CI as-cnpj-js" src="https://img.shields.io/github/actions/workflow/status/as-cnpj/as-cnpj-js/ci.yml?branch=main&style=flat-square&label=ci&labelColor=1C1917"></a>
+  <a href="LICENSE"><img alt="License MIT" src="https://img.shields.io/github/license/as-cnpj/as-cnpj-js?style=flat-square&label=license&labelColor=1C1917&color=84A870"></a>
+  <a href="https://as-cnpj.org"><img alt="Site as-cnpj.org" src="https://img.shields.io/badge/as--cnpj.org-documenta%C3%A7%C3%A3o-FB923C?style=flat-square&labelColor=1C1917"></a>
+</p>
 
 Idiomas: **Português (Brasil)** | [English](README.en.md) | [Español](README.es.md) | [Français](README.fr.md)
-
-[![npm version](https://img.shields.io/npm/v/%40ascnpj%2Fcore)](https://www.npmjs.com/package/@ascnpj/core)
-[![CI](https://github.com/as-cnpj/as-cnpj-js/actions/workflows/ci.yml/badge.svg)](https://github.com/as-cnpj/as-cnpj-js/actions/workflows/ci.yml)
-
-Biblioteca autoral para validação de CNPJ numérico e alfanumérico em JavaScript e TypeScript.
-
-Repositório: `https://github.com/as-cnpj/as-cnpj-js`
 
 ## Status
 
 - repositório público e ativo;
 - pacote em fase inicial `0.x`;
-- pacote publicado no npm como [`@ascnpj/core`](https://www.npmjs.com/package/@ascnpj/core);
-- algoritmo já validado com testes automatizados e vetores compartilhados do ecossistema.
+- publicado no npm como [`@ascnpj/core`](https://www.npmjs.com/package/@ascnpj/core);
+- Trusted Publishing configurado via GitHub Actions;
+- algoritmo validado por testes automatizados e vetores compartilhados do ecossistema.
 
 ## Instalação
 
@@ -22,63 +37,21 @@ Repositório: `https://github.com/as-cnpj/as-cnpj-js`
 npm install @ascnpj/core
 ```
 
-## Comece por aqui
-
-- [API da biblioteca](docs/api.md)
-- [Estratégia de testes](test/README.md)
-- [Checklist de release](docs/release-checklist.md)
-- [Política de segurança](SECURITY.md)
-- [Hub do ecossistema AS-CNPJ](https://github.com/as-cnpj/as-cnpj)
-
-## O que esta biblioteca resolve
-
-Esta biblioteca existe para cobrir, com uma única API, a coexistência entre:
-
-- CNPJ legado numérico;
-- CNPJ alfanumérico previsto pela Receita Federal para julho de 2026;
-- entradas com máscara e sem máscara;
-- fluxos permissivos e fluxos com validação estrita.
-
-Ela implementa:
-
-- validação;
-- normalização;
-- formatação;
-- cálculo de dígitos verificadores;
-- consistência com vetores compartilhados do ecossistema.
-
-## Exemplos rápidos
-
-Validação e normalização:
+## Exemplo rápido
 
 ```js
-import { isValid, normalize } from "@ascnpj/core";
+import {
+  assertValid,
+  calculateCNPJCheckDigits,
+  format,
+  isValid,
+  normalize
+} from "@ascnpj/core";
 
 isValid("12.ABC.345/01DE-35");
 normalize("12.abc.345/01de-35");
-```
-
-Formatação para UI:
-
-```js
-import { format } from "@ascnpj/core";
-
 format("12ABC34501DE35");
-```
-
-Borda estrita de API:
-
-```js
-import { isValidCNPJ } from "@ascnpj/core";
-
-isValidCNPJ("12.ABC.345/01DE-35", { strict: true });
-```
-
-Geração de fixtures e testes:
-
-```js
-import { calculateCNPJCheckDigits } from "@ascnpj/core";
-
+assertValid("12.ABC.345/01DE-35", { strict: true });
 calculateCNPJCheckDigits("12ABC34501DE");
 ```
 
@@ -89,15 +62,14 @@ calculateCNPJCheckDigits("12ABC34501DE");
 - integrações com ERP, faturamento, compliance e onboarding;
 - suites de teste e homologação que precisam gerar e validar exemplos consistentes.
 
-## Garantias centrais
+## O que esta biblioteca entrega
 
-- aceita `A-Z0-9` nos 12 primeiros caracteres;
-- mantém os 2 dígitos verificadores como numéricos;
-- usa módulo 11 com conversão `ASCII - 48`;
-- normaliza entrada para caixa alta;
-- rejeita repetições triviais inválidas;
-- suporta modo permissivo e modo estrito;
-- zero dependências de runtime no pacote.
+- validação de CNPJ numérico legado;
+- validação de CNPJ alfanumérico previsto pela Receita Federal para julho de 2026;
+- suporte a entradas com máscara e sem máscara;
+- modo permissivo e modo estrito;
+- zero dependências de runtime no pacote;
+- consistência com vetores compartilhados do hub.
 
 ## API pública
 
@@ -117,61 +89,34 @@ Aliases explícitos:
 - `assertValidCNPJ(value, options?)`
 - `calculateCNPJCheckDigits(base12)`
 
-## Testes
+## Garantias centrais
 
-Execução direta:
+- aceita `A-Z0-9` nos 12 primeiros caracteres;
+- mantém os 2 dígitos verificadores como numéricos;
+- usa módulo 11 com conversão `ASCII - 48`;
+- normaliza entrada para caixa alta;
+- rejeita repetições triviais inválidas;
+- trata segurança de publicação e supply chain como parte do projeto.
 
-```bash
-node test/run.js
-```
+## Documentação e referências
 
-O conjunto de testes cobre:
-
-- casos positivos numéricos;
-- casos positivos alfanuméricos;
-- casos negativos;
-- modo estrito;
-- consistência entre aliases;
-- vetores compartilhados do hub.
-
-## Publicação
-
-- pacote npm: [`@ascnpj/core`](https://www.npmjs.com/package/@ascnpj/core);
-- zero dependências de runtime;
-- `.env` e `.npmrc` protegidos por `.gitignore`;
-- CI preparada para checagem de sintaxe, testes e conteúdo do pacote;
-- workflow de release alinhado a Trusted Publishing via GitHub Actions;
-- provenance emitida automaticamente no fluxo de release.
+- [API da biblioteca](docs/api.md)
+- [Estratégia de testes](test/README.md)
+- [Checklist de release](docs/release-checklist.md)
+- [Política de segurança](SECURITY.md)
+- [Hub do ecossistema AS-CNPJ](https://github.com/as-cnpj/as-cnpj)
 
 ## Vetores compartilhados
 
 O `as-cnpj-js` não define a verdade sozinho.
 
-O contrato do ecossistema também depende de:
+O contrato do ecossistema depende também de:
 
 - vetores compartilhados no hub;
 - regras documentadas a partir das fontes oficiais;
 - convergência entre implementações futuras em outras linguagens.
 
-## Ecossistema
-
-Org GitHub:
-
-- `https://github.com/as-cnpj`
-
-Hub do projeto:
-
-- manifesto;
-- documentação consolidada;
-- vetores compartilhados;
-- governança entre linguagens.
-
 ## Manutenção
 
-Maintainer:
-
-- `@0moura`
-
-Contato institucional:
-
-- `ascnpj@0moura.io`
+Maintainer: `@0moura`  
+Contato institucional: `ascnpj@0moura.io`
