@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="assets/brand/as-cnpj-logo-light.svg" alt="AS-CNPJ JS" width="860" />
+  <img src="https://raw.githubusercontent.com/as-cnpj/as-cnpj-js/main/assets/brand/as-cnpj-logo-dark.svg" alt="AS-CNPJ JS" width="860" />
 </div>
 
 <p align="center">
@@ -10,18 +10,18 @@
   <a href="https://www.npmjs.com/package/@ascnpj/core">npm</a> ·
   <a href="https://as-cnpj.org">Site</a> ·
   <a href="https://github.com/as-cnpj/as-cnpj">Hub do ecossistema</a> ·
-  <a href="docs/api.md">API</a> ·
-  <a href="test/README.md">Testes</a>
+  <a href="https://github.com/as-cnpj/as-cnpj-js/blob/main/docs/api.md">API</a> ·
+  <a href="https://github.com/as-cnpj/as-cnpj-js/blob/main/test/README.md">Testes</a>
 </p>
 
 <p align="center">
   <a href="https://www.npmjs.com/package/@ascnpj/core"><img alt="npm @ascnpj/core" src="https://img.shields.io/npm/v/%40ascnpj%2Fcore?style=flat-square&label=npm&labelColor=1C1917&color=F97316"></a>
   <a href="https://github.com/as-cnpj/as-cnpj-js/actions/workflows/ci.yml"><img alt="CI as-cnpj-js" src="https://img.shields.io/github/actions/workflow/status/as-cnpj/as-cnpj-js/ci.yml?branch=main&style=flat-square&label=ci&labelColor=1C1917"></a>
-  <a href="LICENSE"><img alt="License MIT" src="https://img.shields.io/github/license/as-cnpj/as-cnpj-js?style=flat-square&label=license&labelColor=1C1917&color=84A870"></a>
+  <a href="https://github.com/as-cnpj/as-cnpj-js/blob/main/LICENSE"><img alt="License MIT" src="https://img.shields.io/github/license/as-cnpj/as-cnpj-js?style=flat-square&label=license&labelColor=1C1917&color=84A870"></a>
   <a href="https://as-cnpj.org"><img alt="Site as-cnpj.org" src="https://img.shields.io/badge/as--cnpj.org-documenta%C3%A7%C3%A3o-FB923C?style=flat-square&labelColor=1C1917"></a>
 </p>
 
-Idiomas: **Português (Brasil)** | [English](README.en.md) | [Español](README.es.md) | [Français](README.fr.md)
+Idiomas: **Português (Brasil)** | [English](https://github.com/as-cnpj/as-cnpj-js/blob/main/README.en.md) | [Español](https://github.com/as-cnpj/as-cnpj-js/blob/main/README.es.md) | [Français](https://github.com/as-cnpj/as-cnpj-js/blob/main/README.fr.md)
 
 ## Status
 
@@ -100,10 +100,10 @@ Aliases explícitos:
 
 ## Documentação e referências
 
-- [API da biblioteca](docs/api.md)
-- [Estratégia de testes](test/README.md)
-- [Checklist de release](docs/release-checklist.md)
-- [Política de segurança](SECURITY.md)
+- [API da biblioteca](https://github.com/as-cnpj/as-cnpj-js/blob/main/docs/api.md)
+- [Estratégia de testes](https://github.com/as-cnpj/as-cnpj-js/blob/main/test/README.md)
+- [Checklist de release](https://github.com/as-cnpj/as-cnpj-js/blob/main/docs/release-checklist.md)
+- [Política de segurança](https://github.com/as-cnpj/as-cnpj-js/blob/main/SECURITY.md)
 - [Hub do ecossistema AS-CNPJ](https://github.com/as-cnpj/as-cnpj)
 
 ## Vetores compartilhados

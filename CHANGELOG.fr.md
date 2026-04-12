@@ -2,6 +2,12 @@
 
 Langues: [Português (Brasil)](CHANGELOG.md) | [English](CHANGELOG.en.md) | [Español](CHANGELOG.es.md) | **Français**
 
+## 0.1.2
+
+- corrige le rendu de la bannière du README sur npm
+- convertit les liens du README en URLs absolues vers GitHub et l'écosystème
+- ajuste la description publique du package à `Author-led`
+
 ## 0.1.1
 
 - publication du package `@ascnpj/core` sur npm

@@ -1,7 +1,7 @@
 {
   "name": "@ascnpj/core",
-  "version": "0.1.1",
-  "description": "Official AS-CNPJ library for validation, normalization and formatting of numeric and alphanumeric CNPJ.",
+  "version": "0.1.2",
+  "description": "Author-led AS-CNPJ library for validation, normalization and formatting of numeric and alphanumeric CNPJ.",
   "type": "module",
   "license": "MIT",
   "main": "./src/index.js",
