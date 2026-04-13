@@ -2,6 +2,13 @@
 
 Idiomas: [Português (Brasil)](CHANGELOG.md) | [English](CHANGELOG.en.md) | **Español** | [Français](CHANGELOG.fr.md)
 
+## 0.1.3
+
+- añade `validateMany` y `validateManyCNPJ`
+- preserva el orden de entrada y devuelve `items` + `summary`
+- expone códigos `reason` estables por ítem
+- actualiza README, API y tipos para la validación por lotes
+
 ## 0.1.2
 
 - corrige la renderización del banner del README en npm
@@ -17,8 +24,8 @@ Idiomas: [Português (Brasil)](CHANGELOG.md) | [English](CHANGELOG.en.md) | **Es
 
 ## 0.1.0
 
-- primera version publica
-- validacion de CNPJ numerico y alfanumerico
-- normalizacion, formateo y calculo de digitos verificadores
-- validacion en modo estricto
-- cobertura de pruebas para el ejemplo oficial de la Receita y casos legados numericos
+- primera versión pública
+- validación de CNPJ numérico y alfanumérico
+- normalización, formateo y cálculo de dígitos verificadores
+- validación en modo estricto
+- cobertura de pruebas para el ejemplo oficial de la Receita y casos legados numéricos

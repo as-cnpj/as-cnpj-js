@@ -2,6 +2,13 @@
 
 Idiomas: **Português (Brasil)** | [English](CHANGELOG.en.md) | [Español](CHANGELOG.es.md) | [Français](CHANGELOG.fr.md)
 
+## 0.1.3
+
+- adiciona `validateMany` e `validateManyCNPJ`
+- preserva a ordem de entrada e retorna `items` + `summary`
+- expõe `reason` estável por item
+- atualiza README, API e tipos para a validação em lote
+
 ## 0.1.2
 
 - correção do banner do README para renderização correta no npm
