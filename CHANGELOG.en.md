@@ -2,6 +2,13 @@
 
 Languages: [Português (Brasil)](CHANGELOG.md) | **English** | [Español](CHANGELOG.es.md) | [Français](CHANGELOG.fr.md)
 
+## 0.1.3
+
+- add `validateMany` and `validateManyCNPJ`
+- preserve input order and return `items` + `summary`
+- expose stable per-item `reason` codes
+- update README, API, and types for batch validation
+
 ## 0.1.2
 
 - fix README banner rendering on npm
