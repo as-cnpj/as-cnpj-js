@@ -12,7 +12,9 @@ import {
   isValid,
   isValidCNPJ,
   normalize,
-  normalizeCNPJ
+  normalizeCNPJ,
+  validateMany,
+  validateManyCNPJ
 } from "../src/index.js";
 
 const vectorCandidates = [
@@ -144,4 +146,43 @@ test("vetores invalidos possuem campo reason", () => {
   for (const entry of vectors.invalid) {
     assert.ok(typeof entry.reason === "string" && entry.reason.length > 0, `reason ausente: ${entry.id}`);
   }
+});
+
+test("validateMany preserva ordem e agrega resumo", () => {
+  const result = validateMany([
+    "12.ABC.345/01DE-35",
+    "11.111.111/1111-11",
+    "12.ABC.345/01DE-36",
+    null
+  ]);
+
+  assert.equal(result.summary.total, 4);
+  assert.equal(result.summary.valid, 1);
+  assert.equal(result.summary.invalid, 3);
+  assert.equal(result.items[0].index, 0);
+  assert.equal(result.items[0].valid, true);
+  assert.equal(result.items[0].normalized, "12ABC34501DE35");
+  assert.equal(result.items[1].reason, "TRIVIAL_REPETITION");
+  assert.equal(result.items[2].reason, "INVALID_CHECK_DIGIT");
+  assert.equal(result.items[3].reason, "INVALID_TYPE");
+  assert.equal(result.summary.reasons.TRIVIAL_REPETITION, 1);
+  assert.equal(result.summary.reasons.INVALID_CHECK_DIGIT, 1);
+  assert.equal(result.summary.reasons.INVALID_TYPE, 1);
+});
+
+test("validateMany respeita modo strict", () => {
+  const result = validateManyCNPJ([
+    "12ABC34501DE35",
+    "12#ABC#345/01DE-35"
+  ], { strict: true });
+
+  assert.equal(result.items[0].valid, true);
+  assert.equal(result.items[0].strictValid, true);
+  assert.equal(result.items[1].valid, false);
+  assert.equal(result.items[1].reason, "INVALID_STRICT_FORMAT");
+});
+
+test("validateMany lanca TypeError para entrada nao-array", () => {
+  assert.throws(() => validateManyCNPJ("12ABC34501DE35"), TypeError);
+  assert.throws(() => validateManyCNPJ(null), TypeError);
 });

@@ -2,6 +2,36 @@ export interface ValidationOptions {
   strict?: boolean;
 }
 
+export interface BatchValidationItem {
+  index: number;
+  input: unknown;
+  normalized: string | null;
+  formatted: string | null;
+  valid: boolean;
+  strictValid: boolean;
+  reason:
+    | "VALID"
+    | "INVALID_TYPE"
+    | "INVALID_ASCII"
+    | "INVALID_LENGTH"
+    | "INVALID_STRICT_FORMAT"
+    | "INVALID_BASE"
+    | "TRIVIAL_REPETITION"
+    | "INVALID_CHECK_DIGIT";
+}
+
+export interface BatchValidationSummary {
+  total: number;
+  valid: number;
+  invalid: number;
+  reasons: Partial<Record<BatchValidationItem["reason"], number>>;
+}
+
+export interface BatchValidationResult {
+  items: BatchValidationItem[];
+  summary: BatchValidationSummary;
+}
+
 /**
  * Remove mascara e converte para caixa alta.
  * Nao valida o CNPJ — use `isValid` para garantir validade.
@@ -30,3 +60,5 @@ export declare function formatCNPJ(value: unknown, options?: ValidationOptions):
 export declare function assertValid(value: unknown, options?: ValidationOptions): string;
 export declare function assertValidCNPJ(value: unknown, options?: ValidationOptions): string;
 
+export declare function validateMany(values: unknown[], options?: ValidationOptions): BatchValidationResult;
+export declare function validateManyCNPJ(values: unknown[], options?: ValidationOptions): BatchValidationResult;

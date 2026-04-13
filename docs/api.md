@@ -2,15 +2,16 @@
 
 Idiomas: **Português (Brasil)** | [English](api.en.md) | [Español](api.es.md) | [Français](api.fr.md)
 
-## Funções Principais
+## Funções principais
 
 - `normalize(value)`
 - `isValid(value, options?)`
 - `format(value, options?)`
 - `assertValid(value, options?)`
 - `calculateCheckDigits(base12)`
+- `validateMany(values, options?)`
 
-## Aliases Explícitos
+## Aliases explícitos
 
 Também existem aliases nomeados com `CNPJ`:
 
@@ -19,13 +20,13 @@ Também existem aliases nomeados com `CNPJ`:
 - `formatCNPJ(value, options?)`
 - `assertValidCNPJ(value, options?)`
 - `calculateCNPJCheckDigits(base12)`
+- `validateManyCNPJ(values, options?)`
 
 ## `normalize(value)`
 
 Converte para caixa alta e remove tudo que não seja `A-Z0-9`.
 
-**Importante**: esta função não valida o CNPJ. O retorno pode não ser um CNPJ válido.
-Use `isValid` após normalizar quando precisar de garantia de validade.
+Importante: esta função não valida o CNPJ. O retorno pode não ser um CNPJ válido. Use `isValid` após normalizar quando precisar de garantia de validade.
 
 Lança `TypeError` se a entrada não for string.
 
@@ -57,6 +58,36 @@ Lança `TypeError` quando inválido.
 ## `calculateCheckDigits(base12)`
 
 Recebe os 12 caracteres-base e retorna os 2 dígitos verificadores.
+
+## `validateMany(values, options?)`
+
+Recebe um array e retorna um objeto com:
+
+- `items`: resultado por item, preservando a ordem de entrada;
+- `summary`: total, válidos, inválidos e contagem por motivo.
+
+Lança `TypeError` se a entrada não for um array.
+
+Cada item retorna:
+
+- `index`
+- `input`
+- `normalized`
+- `formatted`
+- `valid`
+- `strictValid`
+- `reason`
+
+Motivos possíveis:
+
+- `VALID`
+- `INVALID_TYPE`
+- `INVALID_ASCII`
+- `INVALID_LENGTH`
+- `INVALID_STRICT_FORMAT`
+- `INVALID_BASE`
+- `TRIVIAL_REPETITION`
+- `INVALID_CHECK_DIGIT`
 
 ## Regras
 
