@@ -18,7 +18,7 @@
   <a href="https://www.npmjs.com/package/@ascnpj/core"><img alt="npm @ascnpj/core" src="https://img.shields.io/npm/v/%40ascnpj%2Fcore?style=flat-square&label=npm&labelColor=1C1917&color=F97316"></a>
   <a href="https://github.com/as-cnpj/as-cnpj-js/actions/workflows/ci.yml"><img alt="CI as-cnpj-js" src="https://img.shields.io/github/actions/workflow/status/as-cnpj/as-cnpj-js/ci.yml?branch=main&style=flat-square&label=ci&labelColor=1C1917"></a>
   <a href="https://github.com/as-cnpj/as-cnpj-js/blob/main/LICENSE"><img alt="License MIT" src="https://img.shields.io/github/license/as-cnpj/as-cnpj-js?style=flat-square&label=license&labelColor=1C1917&color=84A870"></a>
-  <a href="https://as-cnpj.org"><img alt="Site as-cnpj.org" src="https://img.shields.io/badge/as--cnpj.org-documenta%C3%A7%C3%A3o-FB923C?style=flat-square&labelColor=1C1917"></a>
+  <a href="https://as-cnpj.org"><img alt="Site as-cnpj.org" src="https://img.shields.io/badge/as--cnpj.org-documentação-FB923C?style=flat-square&labelColor=1C1917"></a>
 </p>
 
 Idiomas: **Português (Brasil)** | [English](https://github.com/as-cnpj/as-cnpj-js/blob/main/README.en.md) | [Español](https://github.com/as-cnpj/as-cnpj-js/blob/main/README.es.md) | [Français](https://github.com/as-cnpj/as-cnpj-js/blob/main/README.fr.md)
@@ -80,6 +80,7 @@ Funções principais:
 - `format(value, options?)`
 - `assertValid(value, options?)`
 - `calculateCheckDigits(base12)`
+- `validateMany(values, options?)`
 
 Aliases explícitos:
 
@@ -88,6 +89,33 @@ Aliases explícitos:
 - `formatCNPJ(value, options?)`
 - `assertValidCNPJ(value, options?)`
 - `calculateCNPJCheckDigits(base12)`
+- `validateManyCNPJ(values, options?)`
+
+## Validação em lote
+
+Além da API unitária, a biblioteca expõe:
+
+- `validateMany(values, options?)`
+- `validateManyCNPJ(values, options?)`
+
+O retorno preserva a ordem de entrada e entrega:
+
+- `items`: resultado item a item com `index`, `input`, `normalized`, `formatted`, `valid`, `strictValid` e `reason`;
+- `summary`: total, válidos, inválidos e contagem agregada por motivo.
+
+```js
+import { validateMany } from "@ascnpj/core";
+
+const result = validateMany([
+  "12.ABC.345/01DE-35",
+  "12.ABC.345/01DE-36",
+  null
+]);
+
+result.items[0].valid;
+result.items[1].reason;
+result.summary.reasons;
+```
 
 ## Garantias centrais
 

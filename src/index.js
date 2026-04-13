@@ -8,5 +8,7 @@ export {
   isValidCNPJ as isValid,
   isValidCNPJ,
   normalizeCNPJ as normalize,
-  normalizeCNPJ
+  normalizeCNPJ,
+  validateManyCNPJ as validateMany,
+  validateManyCNPJ
 } from "./cnpj.js";
